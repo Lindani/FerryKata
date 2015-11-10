@@ -10,23 +10,30 @@ class MyTest(unittest.TestCase):
         self.assertEqual(car_number.passengers, 10)
 
     def test_board_method(self):
-        # ferry = Ferry(4, 1)
-        # car = Car(2, "yellow")
-        # status = ferry.board(car)
-        # self.assertEqual(status, "accepted")
+        ferry = Ferry(12, 6)
 
-        # ferry = Ferry(12, 2)
-        # car = Car(12, "red")
-        # car = Car(2, "blue")
-        # status = ferry.board(car)
-        ferry = Ferry(20, 4)
+# Passing tests for boarded cars on the ferry
         blue_car = Car(12, "blue")
         ferry.board(blue_car)
         self.assertEqual(ferry.car_count, 1)
 
         red_car = Car(12, "red")
         ferry.board(red_car)
-
         self.assertEqual(ferry.car_count, 2)
+
+        brown_car = Car(12, "brown")
+        ferry.board(brown_car)
+        self.assertEqual(ferry.car_count, 3)
+
+        white_car = Car(13, "white")
+        ferry.board(white_car)
+        self.assertEqual(ferry.car_count, 4)
+
+# Passing test for accepted passengers on the ferry
+#         green_car = Car(10, "green")
+#         passengers_status = ferry.board(green_car)
+#         self.assertEqual(passengers_status, "accepted")
+
+
 if __name__ == '__main__':
     unittest.main()

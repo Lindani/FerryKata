@@ -15,10 +15,10 @@ class Ferry:
 
     def board(self, car):
         # if car.passengers <= self.allowed_people:
-        self.car_count = self.car_count + 1
-        # print self.car_count
+        if self.car_count <= self.allowed_cars:
+
+            self.car_count = self.car_count + 1
         # print car.passengers
-        # print self.allowed_people
-        #     return "accepted"
-        # else:
-        #     return "rejected"
+            return "accepted"
+        else:
+            return "rejected"
