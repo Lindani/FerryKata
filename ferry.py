@@ -7,12 +7,18 @@ class Car:
 
 class Ferry:
 
-    def __init__(self, people_count, car_count):
-        self.people_count = people_count
-        self.car_count = car_count
+    def __init__(self, allowed_people, allowed_cars):
+        self.allowed_people = allowed_people
+        self.allowed_cars = allowed_cars
+        self.car_count = 0
+        self.people_count = 0
 
-    def board(self):
-        if self.people_count <= 10 and self.car_count <= 2:
-            return "accepted"
-        else:
-            return "rejected"
+    def board(self, car):
+        # if car.passengers <= self.allowed_people:
+        self.car_count = self.car_count + 1
+        # print self.car_count
+        # print car.passengers
+        # print self.allowed_people
+        #     return "accepted"
+        # else:
+        #     return "rejected"
