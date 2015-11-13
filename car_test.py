@@ -5,33 +5,57 @@ import unittest
 
 class MyTest(unittest.TestCase):
     def test_number_of_passengers(self):
-        car_number = Car(10, "yellow")
+        car_passengers = Car(10, "yellow")  # Setup
 
-        self.assertEqual(car_number.passengers, 10)
+        self.assertEqual(car_passengers.passengers, 10)  # Test
 
-    def test_board_method(self):
-        ferry = Ferry(20, 3)
+    def test_board_method_accepted(self):
 
-# Passing tests for boarded cars on the ferry
-        blue_car = Car(2, "blue")
-        self.assertEqual(ferry.board(blue_car), "accepted")
+        ferry = Ferry(20, 2)  # Setup
 
-        brown_car = Car(12, "brown")
-        self.assertEqual(ferry.board(brown_car), "accepted")
+        blue_car = Car(2, "blue")  # Setup
+        boarding_car = ferry.board(blue_car)  # Execute
+        self.assertEqual(boarding_car, "accepted")  # Testing status
 
-        white_car = Car(10, "white")
-        self.assertEqual(ferry.board(white_car), "accepted")
+        brown_car = Car(12, "brown")  # Setup
+        boarding_car = ferry.board(brown_car)  # Execute
+        self.assertEqual(boarding_car, "accepted")  # Testing status
 
-# Pasing test for number of people boarding the ferry
-        # red_car = Car(10, "red")
-        # ferry.board(red_car)
-        # self.assertEqual(ferry.people_count, 45)
+    def test_board_method_rejected(self):
 
+        ferry = Ferry(20, 2)  # Setup
 
-# Passing test for accepted passengers on the ferry
-#         green_car = Car(10, "green")
-#         passengers_status = ferry.board(green_car)
-#         self.assertEqual(passengers_status, "accepted")
+        white_car = Car(26, "white")  # Setup
+        boarding_car = ferry.board(white_car)  # Execute
+        self.assertEqual(boarding_car, "rejected")  # Testing status
+
+    def test_board_people_count(self):
+
+        ferry = Ferry(20, 2)  # Setup
+
+        white_car = Car(6, "white")  # Setup
+        ferry.board(white_car)  # Execute
+        self.assertEqual(ferry.people_count, 6)  # Testing boarding passengers
+
+        red_car = Car(6, "red")  # Setup
+        ferry.board(red_car)  # Execute
+        self.assertEqual(ferry.people_count, 12)  # Testing boarding passengers
+
+    def test_board_method_car_count(self):
+
+        ferry = Ferry(20, 2)  # Setup
+
+        yellow_car = Car(6, "white")  # Setup
+        ferry.board(yellow_car)  # Execute
+        self.assertEqual(ferry.car_count, 1)  # Testing boarding cars
+
+        red_car = Car(6, "red")
+        ferry.board(red_car)
+        self.assertEqual(ferry.car_count, 2)  # Testing boarding cars
+
+        red_car = Car(6, "red")  # Setup
+        ferry.board(red_car)  # Execute
+        self.assertEqual(ferry.car_count, 3)  # Testing boarding cars
 
 
 if __name__ == '__main__':
